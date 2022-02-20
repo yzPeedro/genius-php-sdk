@@ -2,8 +2,6 @@
 
 namespace Yzpeedro\GeniusPhpSdk;
 
-use Yzpeedro\GeniusPhpSdk\Authentication;
-
 class Genius
 {
     private const GENIUS_URL = "https://api.genius.com";
@@ -43,14 +41,15 @@ class Genius
     /**
      * @param string $id
      * @param bool $songs
+     * @param array $extra
      * @return mixed
      */
-    public function artist(string $id, bool $songs = false)
+    public function artist(string $id, bool $songs = false, array $extra = [])
     {
-        $url = self::GENIUS_URL . "/artists/{$id}/songs";
+        $url = self::GENIUS_URL . "/artists/$id/songs?" . http_build_query($extra);
 
         if(! $songs)
-            $url = self::GENIUS_URL . "/artists/{$id}";
+            $url = self::GENIUS_URL . "/artists/$id?" . http_build_query($extra);
 
         $artist = curl_init($url);
         curl_setopt_array($artist, [
