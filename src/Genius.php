@@ -61,4 +61,23 @@ class Genius
 
         return json_decode(curl_exec($artist));
     }
+
+    public function webPage(string $raw_annotatable_url, string $canonical_url = "", string $og_url = "")
+    {
+        $data = [
+            "raw_annotatable_url" => $raw_annotatable_url,
+            "canonical_url" => $canonical_url,
+            "og_url" => $og_url
+        ];
+
+        $webPage = curl_init(self::GENIUS_URL . "/web_pages/lookup/?" . http_build_query($data));
+        curl_setopt_array($webPage, [
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_SSL_VERIFYPEER => false,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HTTPHEADER => [ "Authorization: Bearer " . $_SESSION['genius_access_token'] ]
+        ]);
+
+        return json_decode(curl_exec($webPage));
+    }
 }
