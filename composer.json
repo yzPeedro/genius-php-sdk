@@ -1,0 +1,17 @@
+{
+    "name": "yzpeedro/genius-php-sdk",
+    "description": "Software development kit for Genius api",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Yzpeedro\\GeniusPhpSdk\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yzPeedro",
+            "email": "pedrocruzpessoa16@gmail.com"
+        }
+    ],
+    "require": {}
+}

@@ -1,0 +1,6 @@
+## local
+.idea/
+.vscode/
+
+## project
+vendor/*
